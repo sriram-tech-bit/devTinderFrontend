@@ -3,10 +3,13 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux'
  import { addUser } from '../utils/userSlice'
  import { Base_URL } from '../utils/constants'
+ import { Navigate, useNavigate } from 'react-router-dom'
 const Login= () => {
   const [emailId,setEmail]=useState("")
   const [passWord,setPassWord]=useState("")
+  const [err,setError]=useState("")
   let disapatch=useDispatch();
+  let navigate=useNavigate();
  
   let handleLogin=async()=>{
      try{
@@ -21,9 +24,10 @@ const Login= () => {
 
         )
         disapatch(addUser(res))
+       navigate("/")
      }
      catch(err){
-    console.log(err)
+   setError(err?.response?.data || "Something went wrong")
      }
   }
   return (
@@ -40,6 +44,7 @@ const Login= () => {
   <input type="password" className="input" placeholder="Password"  onChange={(e)=>{
         setPassWord(e.target.value)
   }}/>
+  <p className='text-red-600'>{err}</p>
 
   <button className="btn btn-neutral mt-4" onClick={()=>handleLogin()}>Login</button>
 </fieldset>
