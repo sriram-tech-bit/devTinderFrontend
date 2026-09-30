@@ -13,7 +13,7 @@ const ProfileCard = ({user}) => {
       className="rounded-xl" />
   </figure>
   <div className="card-body items-center text-center">
-    <h2 className="name text-3xl">{firstName+" "+lastName}</h2>
+    <h2 className="name text-2xl">{firstName+" "+lastName}</h2>
     <h3>{about}</h3>
     <p>{gender}</p>
     </div>
