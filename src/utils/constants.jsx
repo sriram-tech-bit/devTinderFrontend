@@ -1,1 +1,1 @@
- export let Base_URL="http://localhost:3000"
+export let Base_URL = location.hostname === "localhost" ? "http://localhost:3000" : "/api"
