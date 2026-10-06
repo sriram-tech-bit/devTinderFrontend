@@ -19,7 +19,7 @@ let fetchUser= async()=>{
   withCredentials:true
 
  })
- disapatch(addUser(res))  
+ disapatch(addUser(res.data))  
   }
   catch(err){
     if(err.status===401){

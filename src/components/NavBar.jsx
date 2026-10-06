@@ -39,7 +39,7 @@ const NavBar = () => {
          
         <img 
             alt="Tailwind CSS Navbar component"
-            src={user.data.photoUrl}/>
+            src={user.photoUrl}/>
         </div>}
       </div>
       <ul
