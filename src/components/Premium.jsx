@@ -1,7 +1,6 @@
-import axios from 'axios'
-import React from 'react'
-import { Base_URL } from '../utils/constants'
-import  { useState, useEffect } from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { Base_URL } from "../utils/constants";
 
 const Premium = () => {
   const [isUserPremium, setIsUserPremium] = useState(null); // null = loading
@@ -65,13 +64,50 @@ const Premium = () => {
     }
   };
 
-  if (isUserPremium === null) return <div className="text-center my-10">Loading...</div>;
+  if (isUserPremium === null)
+    return <div className="text-center my-10">Loading...</div>;
 
   return isUserPremium ? (
     <h1 className="text-center my-10 text-2xl">
       You are already a premium user {membershipType && `(${membershipType})`}
     </h1>
   ) : (
-    /* your Silver / Gold cards, unchanged */
+    <div className="flex w-full flex-col lg:flex-row mt-10 mb-10 justify-center">
+      <div className="card bg-slate-200 text-slate-900 rounded-box grid min-h-32 grow place-items-center p-3">
+        <h2 className="card-title text-slate-700">Silver</h2>
+        <ul>
+          <li>Get 100 connections per day</li>
+          <li>Chat with others</li>
+          <li>Blue tick for 3 months</li>
+        </ul>
+        <button
+          className="btn btn-primary mt-4"
+          type="button"
+          onClick={() => handlePayment("silver")}
+        >
+          Buy Now
+        </button>
+      </div>
+
+      <div className="divider lg:divider-horizontal">OR</div>
+
+      <div className="card bg-amber-100 text-amber-950 rounded-box grid min-h-32 grow place-items-center p-3">
+        <h2 className="card-title text-amber-600">Gold</h2>
+        <ul>
+          <li>Get unlimited connections per day</li>
+          <li>Chat with others</li>
+          <li>Blue tick for 6 months</li>
+        </ul>
+        <button
+          className="btn btn-warning mt-4"
+          type="button"
+          onClick={() => handlePayment("gold")}
+        >
+          Buy Now
+        </button>
+      </div>
+    </div>
   );
 };
+
+export default Premium;
