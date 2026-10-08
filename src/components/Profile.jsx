@@ -8,7 +8,7 @@ const Profile = () => {
 let user=useSelector((store)=>store.User)
   return (
     <div className='flex justify-center'>
-  {user&&<EditProfile user={user.data}/>}
+  {user&&<EditProfile user={user}/>}
 
   </div>
   )
